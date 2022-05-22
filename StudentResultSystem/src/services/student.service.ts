@@ -6,13 +6,13 @@ import { student } from 'src/app/models/student.model';
   providedIn: 'root'
 })
 export class StudentService {
+  constructor(private http:HttpClient){}
+      studentData:student=new student();
+      readonly baseUrl = 'https://localhost:44348/api/Storage/UpdateAzureBlob';
 
-  studentData : student = new student();
-  constructor(private http:HttpClient) { }
-  baseUrl:string = "";
+      addStudent()
+      {
+         return this.http.post(this.baseUrl,this.studentData);
+      }
 
-  addStudent()
-  {
-    return this.http.get<student>(this.baseUrl+"Student Details");
-  }
 }

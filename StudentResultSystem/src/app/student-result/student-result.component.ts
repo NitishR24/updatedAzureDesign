@@ -3,6 +3,7 @@ import { student } from 'src/app/models/student.model';
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { StudentService } from 'src/services/student.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-student-result',
@@ -14,8 +15,8 @@ export class StudentResultComponent implements OnInit {
 
   constructor(public studentService : StudentService) {}
 
-  ngOnInit():void{
-  }
+  ngOnInit():void{}
+
   onSubmit(myForm:NgForm){
     this.studentService.addStudent().subscribe({
       next:(data)=>{ },
