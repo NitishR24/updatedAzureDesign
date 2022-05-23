@@ -53,4 +53,4 @@ jobs:
           app-name: 'StudentResultsWebApp'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CC71BC5AED914BC1AC6332105FAC461D }}
-          package: .
+          package: /dist/updatedAzureDesign
