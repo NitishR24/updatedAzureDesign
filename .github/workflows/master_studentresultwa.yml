@@ -53,4 +53,4 @@ jobs:
           app-name: 'StudentresultWA'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AAB8172FB872421DA9DEA4782A843936 }}
-          package: .
+          package: ./dist/StudentresultWA
