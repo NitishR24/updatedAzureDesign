@@ -8,7 +8,8 @@ import { student } from 'src/app/models/student.model';
 export class StudentService {
   constructor(private http:HttpClient){}
       studentData:student=new student();
-      readonly baseUrl = 'https://localhost:44348/api/Storage/UpdateAzureBlob';
+    //  readonly baseUrl = 'https://localhost:44348/api/Storage/UpdateAzureBlob';
+        readonly baseUrl = 'https://mvcapptoblob202205231646es.azurewebsites.net/api/Storage/UpdateAzureBlob';
 
       addStudent()
       {
@@ -16,3 +17,5 @@ export class StudentService {
       }
 
 }
+
+

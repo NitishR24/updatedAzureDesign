@@ -15,13 +15,13 @@ label
 
 
 
-    body {
+    /* body {
         background-image: url(https://t3.ftcdn.net/jpg/03/51/51/28/360_F_351512882_2kFH8IaSe4lyA7SXBLzEXyGKNEgbO1iH.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         font-size: 18px;
         font-weight:bold;
-    }
+    } */
     .row
     {
         display:block;

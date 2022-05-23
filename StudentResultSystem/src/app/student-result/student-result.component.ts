@@ -13,11 +13,15 @@ import * as $ from 'jquery';
 
 export class StudentResultComponent implements OnInit {
 
+  myimage:string = "D:\\Angular\\angular-sumanth\\StudentResultSystem\\images";
+  alert:boolean = false;
+
   constructor(public studentService : StudentService) {}
 
   ngOnInit():void{}
 
   onSubmit(myForm:NgForm){
+    this.alert=true;
     this.studentService.addStudent().subscribe({
       next:(data)=>{ },
       complete:()=>{console.log("Successfully added the details. You will shortly receive an email.");},

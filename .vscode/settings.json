@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1101a877-8eeb-4009-8c54-cf54283bae55/resourceGroups/AzureResourceGroup/providers/Microsoft.Web/sites/StudentsResultWA",
+    "appService.deploySubpath": "StudentResultSystem\\dist\\student-result-system"
+}

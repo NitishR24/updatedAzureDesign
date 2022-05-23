@@ -1,230 +1,53 @@
-<!-- <div class="container">
-  <div class="text-center">
-    <h4>Student Information</h4>
-  </div>
-  <br>
-  <div class="row ">
-    <div class="col">
-      <label for="Form" class="form-label">First Name</label>
-      <input type="text" class="form-control" id="Form" placeholder="John" aria-label="First Name">
-    </div>
-    <div class="col">
-      <label for="Form" class="form-label">Last Name</label>
-      <input type="text" class="form-control" id="Form" placeholder="Richard"  aria-label="Last Name">
-    </div>
-    <div class="col">
-      <label for="Form" class="form-label">Roll Number</label>
-      <input type="text" class="form-control" id="Form" placeholder="JR957"  aria-label="Roll Number">
-    </div>
-    <div class="col">
-        <label for="Form" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="Form" placeholder="name@example.com">
-    </div>
-    <div class="card">
-      <div class=" text-center">
-       <h4>Average Calculation</h4>
-      </div>
-      <br>
-      <form>
-        <div class="row">
-          <div class="col">
-            <label>Maths</label>
-            <input type="number" name="Maths" class="form-control" aria-label="Maths" [(ngModel)]="Maths">
-          </div>
-          <div class="col">
-            <label>Physics</label>
-            <input type="number" name="Physics" class="form-control" aria-label="Physics" [(ngModel)]="Physics">
-          </div>
-          <div class="col">
-            <label>Chemistry</label>
-            <input type="number" name="Chemistry" class="form-control" aria-label="Chemistry" [(ngModel)]="Chemistry">
-          </div>
-          <br>
-          <div class="row" class="text-center" class="mb-3">
-           <b><label>Average:</label></b>
-            <output name="average" type="number" class="form-control" aria-label="Average" >{{average}}</output>
-          </div>
-          <div class="text-center">
-            <button (click)="Average()" type="button" class="btn btn-success mx-2">Average</button>
-            <button type="button" class="btn btn-success">Submit</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div> -->
-
-
-<!-- <style>
-    body {
-        background-image: url(https://t3.ftcdn.net/jpg/03/51/51/28/360_F_351512882_2kFH8IaSe4lyA7SXBLzEXyGKNEgbO1iH.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        font-size: 18px;
-        font-weight:bold;
-    }
-    .row
-    {
-        display:block;
-    }
-</style>
-
-<script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-
-<script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
-<script type='text/javascript'>
-    debugger;
-    $(function(){
-          //When the blur event occurs from your Textbox (you lose focus)
-          $('#Chemistry').blur(function(){
-               add();
-          });
-          $('#Physics').blur(function(){
-               add();
-          });
-          $('#Math').blur(function(){
-               add();
-          });
-    });
-    function  add()
-    {
-        var Math = $('#Math').val();
-        var Physics = $('#Physics').val();
-        var Chemistry = $('#Chemistry').val();
-        var total = (parseFloat(Math) + parseFloat(Physics) + parseFloat(Chemistry));
-        var avg = total/3.0;
-       $('#Average').val(parseFloat(avg).toFixed(2));
-    }
-</script>
-
-<script>
-function myFunction() {
-  location.replace("https://localhost:44304/")
-}
-</script>
-
-
-<h3>Enter Student Details</h3>
-
-<hr />
-
-    <p>
-    <img src="Student.png" style="height: 700px;position: absolute;left: 900px;" />
-    </p>
-
-<div class="row">
-    <div class="col-md-4">
-        <form [formGroup]="registerForm"  name="myForm">
-
-          <div class="mb-2">
-            <label>First Name</label>
-            <input type="text" class="form-control" formControlName="FirstName" placeholder="Enter you name">
-            <div class="form-text text-danger" *ngIf="FirstName.errors?.['required'] &&
-            (FirstName.touched || FirstName.dirty)">
-              Name is Required.
-            </div>
-            <div class="form-text text-danger" *ngIf="FirstName.errors?.['minlength'] &&(FirstName.touched || FirstName.dirty)">
-              Name is too short.
-            </div>
-            <div class="form-text text-danger" *ngIf="FirstName.errors?.['pattern'] &&(FirstName.touched || FirstName.dirty)">
-              Name should start with an alphabet.
-            </div>
-          </div>
-
-             <div class="form-group">
-                <label asp-for="FirstName" style="color:black" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" placeholder="John" type="text" name="FirstName" ng-model="FirstName" required/>
-                <span asp-validation-for="FirstName" class="text-danger" style="color:red" ng-show="myForm.FirstName.$dirty && myForm.FirstName.$invalid"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" style="color:black" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" placeholder="Doe" type="text" name="LastName" ng-model="LastName" required />
-                <span asp-validation-for="LastName" class="text-danger" style="color:red" ng-show="myForm.LastName.$dirty && myForm.LastName.$invalid"></span>
-            </div>
-           <div class="form-group">
-                <label asp-for="Email" style="color:black" class="control-label"></label>
-                <input asp-for="Email" class="form-control" placeholder="example@gmail.com" type="email" name="Email" ng-model="Email" required  />
-                <span asp-validation-for="Email" class="text-danger" style="color:red" ng-show="myForm.Email.$dirty && myForm.Email.$invalid"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Math" style="color:black" class="control-label"></label>
-                <input asp-for="Math" class="form-control" type="number" name="Math" ng-model="Math" required />
-                <span asp-validation-for="Math" class="text-danger" style="color:red" ng-show="myForm.Math.$dirty && myForm.Math.$invalid"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Physics" style="color:black" class="control-label"></label>
-                <input asp-for="Physics" class="form-control" type="number" name="Physics" id="Physics" ng-model="Physics" required />
-                <span asp-validation-for="Physics" class="text-danger" style="color:red" ng-show="myForm.Physics.$dirty && myForm.Physics.$invalid"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Chemistry" style="color:black" class="control-label"></label>
-                <input asp-for="Chemistry" class="form-control" type="number" name="Chemistry" ng-model="Chemistry" required  />
-                <span asp-validation-for="Chemistry" class="text-danger" style="color:red" ng-show="myForm.Chemistry.$dirty && myForm.Chemistry.$invalid"></span>
-            </div>
-             <div class="form-group">
-                <label asp-for="Average" style="color:black" class="control-label"></label>
-                <input asp-for="Average" class="form-control" pattern="^\d*(\.\d{0,2})?$" readonly />
-                <span asp-validation-for="Average" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary btn-lg" />
-                <input type="reset" value="Reset" onclick="myFunction()" class="btn btn-primary btn-lg" />
-            </div>
-        </form>
-    </div>
-</div>
- -->
-
-<h3>Fill in the below details</h3>
+<!-- <h3>Fill in the below details</h3> -->
  <div class="row">
    <div class="col-md-5">
       <form autocomplete="off"#myForm="ngForm"(ngSubmit)="onSubmit(myForm)">
 
         <!-- Roll No -->
         <div class="mb-2">
-          <label>Roll No</label>
+          <label>ROLL NUMBER</label>
           <input type="text"name="rollno"class="form-control"
        [(ngModel)]="studentService.studentData.rollNo"#rollno="ngModel"autocomplete="off"
        required minlength="3"pattern="^[a-zA-Z][0-9]{1,30}$"
        [class.is-invalid]="rollno.touched && rollno.invalid">
     </div>
      <!-- Validation -->
-     <!-- <div *ngIf="myForm.submitted || rollno.touched && rollno.invalid">
+     <div *ngIf="myForm.submitted || rollno.touched && rollno.invalid">
        <div class="text-danger"*ngIf="rollno.errors ?.['required']">
         Roll Number is mandatory</div>
-        </div> -->
+        </div>
 
         <!-- First Name -->
         <div class="mb-2">
-           <label>First Name</label>
+           <label>FIRST NAME</label>
            <input type="text"name="firstname"class="form-control"
         [(ngModel)]="studentService.studentData.firstName"#firstname="ngModel"autocomplete="off"
         required minlength="3"pattern="^[a-zA-Z]{1,30}$"
         [class.is-invalid]="firstname.touched && firstname.invalid">
      </div>
       <!-- Validation -->
-      <!-- <div *ngIf="myForm.submitted || firstname.touched && firstname.invalid">
+      <div *ngIf="myForm.submitted || firstname.touched && firstname.invalid">
         <div class="text-danger"*ngIf="firstname.errors ?.['required']">
          First Name is mandatory</div>
-         </div> -->
+         </div>
 
          <!-- Last Name -->
         <div class="mb-2">
-          <label>Last Name</label>
+          <label>LAST NAME</label>
           <input type="text"name="lastname"class="form-control"
        [(ngModel)]="studentService.studentData.lastName"#lastname="ngModel"autocomplete="off"
        required minlength="3"pattern="^[a-zA-Z]{1,30}$"
        [class.is-invalid]="lastname.touched && lastname.invalid">
     </div>
      <!-- Validation -->
-     <!-- <div *ngIf="myForm.submitted || lastname.touched && lastname.invalid">
+     <div *ngIf="myForm.submitted || lastname.touched && lastname.invalid">
        <div class="text-danger"*ngIf="lastname.errors ?.['required']">
         Last Name is mandatory</div>
-        </div> -->
+        </div>
 
         <!-- Email -->
         <div class="mb-2">
-          <label>Email</label>
+          <label>EMAIL ID</label>
           <input type="email"name="email"class="form-control"
        [(ngModel)]="studentService.studentData.email"#email="ngModel"autocomplete="off"
        required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
@@ -238,7 +61,7 @@ function myFunction() {
 
          <!-- Math -->
          <div class="mb-2">
-          <label>Math</label>
+          <label>MATHS MARKS</label>
           <input type="number"name="math"class="form-control"
        [(ngModel)]="studentService.studentData.math"#math="ngModel"autocomplete="off"
        required pattern="^[1-9][0-9]?$|^100$"
@@ -252,7 +75,7 @@ function myFunction() {
 
         <!-- Physics -->
         <div class="mb-2">
-          <label>Physics</label>
+          <label>PHYSICS MARKS</label>
           <input type="number"name="physics"class="form-control"
        [(ngModel)]="studentService.studentData.physics"#physics="ngModel"autocomplete="off"
        required pattern="^[1-9][0-9]?$|^100$"
@@ -266,7 +89,7 @@ function myFunction() {
 
         <!-- Chemistry -->
         <div class="mb-2">
-          <label>Chemistry</label>
+          <label>CHEMISTRY MARKS</label>
           <input type="number"name="chemistry"class="form-control"
        [(ngModel)]="studentService.studentData.chemistry"#chemistry="ngModel"autocomplete="off"
        required pattern="^[1-9][0-9]?$|^100$"
@@ -283,3 +106,11 @@ function myFunction() {
           <button type="submit" class="btn btn-outline-dark">Register</button>
           <button type="reset"  class="btn btn-outline-warning">Reset</button>
         </div>
+        <div style="width:480px;height:50px;" *ngIf="alert" class="alert alert-warning alert-dismissible fade show " role="alert">
+          <strong>Success!</strong> Data is stored successfully into the blob.
+          <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
+            <span aria-hidden="true">&times;</span>
+          <!-- </button> -->
+        </div>
+
+
