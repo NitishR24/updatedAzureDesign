@@ -13,7 +13,18 @@ import * as $ from 'jquery';
 
 export class StudentResultComponent implements OnInit {
 
-  myimage:string = "D:\\Angular\\angular-sumanth\\StudentResultSystem\\images";
+  public Maths:number = 0;
+  public Physics:number = 0;
+  public Chemistry:number=0;
+  public average:number=0;
+
+Average(){
+  this.studentService.studentData.chemistry = this.Chemistry;
+  this.studentService.studentData.physics = this.Physics;
+  this.studentService.studentData.math = this.Maths;
+    this.average=(this.Maths+this.Physics+this.Chemistry)/3;
+  }
+
   alert:boolean = false;
 
   constructor(public studentService : StudentService) {}

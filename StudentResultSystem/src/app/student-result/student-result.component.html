@@ -1,14 +1,15 @@
-<!-- <h3>Fill in the below details</h3> -->
+
  <div class="row">
+  <h3>Enter Student Details</h3>
    <div class="col-md-5">
       <form autocomplete="off"#myForm="ngForm"(ngSubmit)="onSubmit(myForm)">
 
         <!-- Roll No -->
         <div class="mb-2">
           <label>ROLL NUMBER</label>
-          <input type="text"name="rollno"class="form-control"
+          <input placeholder="Enter Roll number" type="text"name="rollno"class="form-control"
        [(ngModel)]="studentService.studentData.rollNo"#rollno="ngModel"autocomplete="off"
-       required minlength="3"pattern="^[a-zA-Z][0-9]{1,30}$"
+       required minlength="3"pattern="^[a-zA-Z0-9 ]+$"
        [class.is-invalid]="rollno.touched && rollno.invalid">
     </div>
      <!-- Validation -->
@@ -20,9 +21,9 @@
         <!-- First Name -->
         <div class="mb-2">
            <label>FIRST NAME</label>
-           <input type="text"name="firstname"class="form-control"
+           <input placeholder="John" type="text"name="firstname"class="form-control"
         [(ngModel)]="studentService.studentData.firstName"#firstname="ngModel"autocomplete="off"
-        required minlength="3"pattern="^[a-zA-Z]{1,30}$"
+        required minlength="3"pattern="[a-z,A-Z]*"
         [class.is-invalid]="firstname.touched && firstname.invalid">
      </div>
       <!-- Validation -->
@@ -34,9 +35,9 @@
          <!-- Last Name -->
         <div class="mb-2">
           <label>LAST NAME</label>
-          <input type="text"name="lastname"class="form-control"
+          <input placeholder="Doe" type="text"name="lastname"class="form-control"
        [(ngModel)]="studentService.studentData.lastName"#lastname="ngModel"autocomplete="off"
-       required minlength="3"pattern="^[a-zA-Z]{1,30}$"
+       required minlength="1" pattern="[a-z,A-Z]*"
        [class.is-invalid]="lastname.touched && lastname.invalid">
     </div>
      <!-- Validation -->
@@ -48,7 +49,7 @@
         <!-- Email -->
         <div class="mb-2">
           <label>EMAIL ID</label>
-          <input type="email"name="email"class="form-control"
+          <input placeholder="example@gmail.com" type="email"name="email"class="form-control"
        [(ngModel)]="studentService.studentData.email"#email="ngModel"autocomplete="off"
        required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
        [class.is-invalid]="email.touched && email.invalid">
@@ -62,49 +63,36 @@
          <!-- Math -->
          <div class="mb-2">
           <label>MATHS MARKS</label>
-          <input type="number"name="math"class="form-control"
-       [(ngModel)]="studentService.studentData.math"#math="ngModel"autocomplete="off"
-       required pattern="^[1-9][0-9]?$|^100$"
-       [class.is-invalid]="math.touched && math.invalid">
-    </div>
-     <!-- Validation -->
-     <div *ngIf="myForm.submitted || math.touched && math.invalid">
-       <div class="text-danger"*ngIf="math.errors ?.['required']">
-        Math marks is mandatory</div>
+          <input placeholder="Number between 0-100" #num="ngModel" required type="number" min="0" max="100" inputmode="numeric" name="Maths" class="form-control" aria-label="Maths" [(ngModel)]="Maths">
+            <div *ngIf ="num.touched && num.invalid" class="alert-danger"> Enter Marks</div>
         </div>
 
         <!-- Physics -->
         <div class="mb-2">
           <label>PHYSICS MARKS</label>
-          <input type="number"name="physics"class="form-control"
-       [(ngModel)]="studentService.studentData.physics"#physics="ngModel"autocomplete="off"
-       required pattern="^[1-9][0-9]?$|^100$"
-       [class.is-invalid]="physics.touched && physics.invalid">
-    </div>
-     <!-- Validation -->
-     <div *ngIf="myForm.submitted || physics.touched && physics.invalid">
-       <div class="text-danger"*ngIf="physics.errors ?.['required']">
-        Physics marks is mandatory</div>
+          <input placeholder="Number between 0-100" #number="ngModel" required type="number" min="0" max="100" inputmode="numeric"name="Physics" class="form-control" aria-label="Physics" [(ngModel)]="Physics">
+            <div *ngIf ="number.touched && number.invalid"class="alert-danger" > Enter Marks</div>
         </div>
 
         <!-- Chemistry -->
         <div class="mb-2">
           <label>CHEMISTRY MARKS</label>
-          <input type="number"name="chemistry"class="form-control"
-       [(ngModel)]="studentService.studentData.chemistry"#chemistry="ngModel"autocomplete="off"
-       required pattern="^[1-9][0-9]?$|^100$"
-       [class.is-invalid]="chemistry.touched && chemistry.invalid">
-    </div>
-     <!-- Validation -->
-     <div *ngIf="myForm.submitted || chemistry.touched && chemistry.invalid">
-       <div class="text-danger"*ngIf="chemistry.errors ?.['required']">
-        Chemistry marks is mandatory</div>
+          <input placeholder="Number between 0-100" #number="ngModel" type="number"  min="0" max="100" name="Chemistry" class="form-control" aria-label="Chemistry" [(ngModel)]="Chemistry">
+            <div *ngIf ="number.touched && number.invalid" class="alert-danger"> Enter Marks</div>
         </div>
+
+        <!-- Average -->
+        <div class="row" class="text-center" class="mb-3">
+          <b><label>Average:</label></b>
+           <output name="average" type="number" class="form-control" aria-label="Average" >{{average | number : '1.2-2'}}</output>
+         </div>
+
 
         <!-- button -->
         <div class="mb-2">
           <button type="submit" class="btn btn-outline-dark">Register</button>
           <button type="reset"  class="btn btn-outline-warning">Reset</button>
+          <button (click)="Average()" type="button" class="btn btn-info">Average</button>
         </div>
         <div style="width:480px;height:50px;" *ngIf="alert" class="alert alert-warning alert-dismissible fade show " role="alert">
           <strong>Success!</strong> Data is stored successfully into the blob.
@@ -112,5 +100,32 @@
             <span aria-hidden="true">&times;</span>
           <!-- </button> -->
         </div>
+        </form>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
