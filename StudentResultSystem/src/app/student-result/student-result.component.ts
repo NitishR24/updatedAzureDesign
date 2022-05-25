@@ -19,9 +19,9 @@ export class StudentResultComponent implements OnInit {
   public average:number=0;
 
 Average(){
-  this.studentService.studentData.chemistry = this.Chemistry;
-  this.studentService.studentData.physics = this.Physics;
-  this.studentService.studentData.math = this.Maths;
+    this.studentService.studentData.chemistry = this.Chemistry;
+    this.studentService.studentData.physics = this.Physics;
+    this.studentService.studentData.math = this.Maths;
     this.average=(this.Maths+this.Physics+this.Chemistry)/3;
   }
 
